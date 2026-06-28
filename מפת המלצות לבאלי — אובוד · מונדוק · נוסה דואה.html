@@ -80,7 +80,7 @@
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
+<script>window.addEventListener("load",function(){
 const CATS = {
   hotel:  {name:"מלונות הטיול", color:"#7c3aed", icon:"🏨"},
   ubud:   {name:"אובוד וסביבתה", color:"#16a34a", icon:"❀"},
@@ -189,7 +189,7 @@ const tip = document.createElement('div');
 tip.className = 'tip';
 tip.innerHTML = 'סך הכל ' + PLACES.length + ' נקודות. הקובץ עצמאי — אפשר לפתוח בכל דפדפן ולשתף.';
 legend.appendChild(tip);
-</script>
+});</script>
 
 
 </body></html>
