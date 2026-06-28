@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)file:///Users/guygelb/Downloads/bali-map.html -->
+<html lang="he" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה</title>
+<link rel="stylesheet" href="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/leaflet.min.css">
+<style>
+  :root{
+    --hotel:#7c3aed; --ubud:#16a34a; --munduk:#2563eb; --south:#ea580c;
+    --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb; --bg:#f7f5f0;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:"Segoe UI",Arial,"Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg)}
+  #app{display:flex;flex-direction:column;height:100%}
+  header{
+    background:linear-gradient(100deg,#0f766e,#15803d);color:#fff;
+    padding:14px 20px;box-shadow:0 2px 10px rgba(0,0,0,.15);z-index:1000
+  }
+  header h1{margin:0;font-size:20px;font-weight:700}
+  header p{margin:4px 0 0;font-size:13px;opacity:.92}
+  #main{flex:1;position:relative}
+  #map{position:absolute;inset:0}
+  .panel{
+    position:absolute;top:12px;left:12px;z-index:1000;background:#fff;
+    border-radius:12px;box-shadow:0 4px 18px rgba(0,0,0,.18);
+    padding:12px 14px;max-width:230px;font-size:14px
+  }
+  .panel h2{margin:0 0 8px;font-size:14px;color:var(--muted);font-weight:600;letter-spacing:.2px}
+  .filter{display:flex;align-items:center;gap:9px;padding:6px 4px;border-radius:8px;cursor:pointer;user-select:none}
+  .filter:hover{background:#f3f4f6}
+  .filter input{display:none}
+  .dot{width:15px;height:15px;border-radius:50%;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+  .filter .label{flex:1;font-weight:600}
+  .filter .count{color:var(--muted);font-size:12px}
+  .filter.off{opacity:.4}
+  .filter.off .dot{background:#cbd5e1 !important}
+  .tip{margin-top:10px;font-size:11.5px;color:var(--muted);line-height:1.5;border-top:1px solid var(--line);padding-top:8px}
+  .leaflet-popup-content{margin:12px 14px;direction:rtl;text-align:right;line-height:1.5}
+  .pop-name{font-weight:700;font-size:15px;margin-bottom:2px}
+  .pop-area{display:inline-block;font-size:11px;color:#fff;padding:1px 8px;border-radius:20px;margin-bottom:6px}
+  .pop-desc{font-size:13px;color:#374151;margin-bottom:8px}
+  .pop-link{display:inline-block;font-size:12.5px;font-weight:600;color:#0f766e;text-decoration:none;border:1px solid #0f766e;border-radius:8px;padding:4px 10px}
+  .pop-link:hover{background:#0f766e;color:#fff}
+  .marker-pin{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,.35)}
+  .marker-pin span{transform:rotate(45deg);color:#fff;font-size:12px;font-weight:700}
+  @media(max-width:520px){.panel{max-width:180px;font-size:13px}header h1{font-size:17px}}
+</style>
+</head>
+<body class="">
+<div id="app">
+  <header>
+    <h1>מפת המלצות לבאלי 🌴</h1>
+    <p>אובוד · מונדוק (ההרים) · נוסה דואה (הדרום) — לחצו על נקודה לפרטים, וסננו לפי אזור</p>
+  </header>
+  <div id="main">
+    <div id="map" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style=""><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-1555px, -552px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(-9890px, -3208px, 0px) scale(2);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 19; transform: translate3d(-3296px, -1070px, 0px) scale(1);"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4289.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5730px, 1894px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4288.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5730px, 1638px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4289(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5474px, 1894px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4289(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5986px, 1894px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4290.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5730px, 2150px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4288(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5474px, 1638px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4288(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5986px, 1638px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4290(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5474px, 2150px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4290(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5986px, 2150px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4287.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5730px, 1382px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4289(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5218px, 1894px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4289(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6242px, 1894px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4291.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5730px, 2406px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4287(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5474px, 1382px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4287(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5986px, 1382px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4288(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5218px, 1638px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4288(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6242px, 1638px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4290(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5218px, 2150px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4290(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6242px, 2150px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4291(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5474px, 2406px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4291(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5986px, 2406px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4287(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5218px, 1382px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4287(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6242px, 1382px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4291(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(5218px, 2406px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4291(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6242px, 2406px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4289(5).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4962px, 1894px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4289(6).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6498px, 1894px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4288(5).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4962px, 1638px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4288(6).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6498px, 1638px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4290(5).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4962px, 2150px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4290(6).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6498px, 2150px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4287(5).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4962px, 1382px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4287(6).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6498px, 1382px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4291(5).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4962px, 2406px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4291(6).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6498px, 2406px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4289(7).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4706px, 1894px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4289(8).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6754px, 1894px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4288(7).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4706px, 1638px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4288(8).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6754px, 1638px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4290(7).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4706px, 2150px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4290(8).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6754px, 2150px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4287(7).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4706px, 1382px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4287(8).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6754px, 1382px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4291(7).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4706px, 2406px, 0px); opacity: 1;"><img alt="" src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/4291(8).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(6754px, 2406px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-marker-pane"><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3308px, 914px, 0px); z-index: 914;"><div class="marker-pin" style="background:#7c3aed"><span>🏨</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2368px, -234px, 0px); z-index: -234;"><div class="marker-pin" style="background:#7c3aed"><span>🏨</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3150px, 3052px, 0px); z-index: 3052;"><div class="marker-pin" style="background:#7c3aed"><span>🏨</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3703px, 664px, 0px); z-index: 664;"><div class="marker-pin" style="background:#16a34a"><span>❀</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3414px, 1151px, 0px); z-index: 1151;"><div class="marker-pin" style="background:#16a34a"><span>❀</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3424px, 1154px, 0px); z-index: 1154;"><div class="marker-pin" style="background:#16a34a"><span>❀</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3378px, 1136px, 0px); z-index: 1136;"><div class="marker-pin" style="background:#16a34a"><span>❀</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3373px, 1071px, 0px); z-index: 1071; outline-style: none;"><div class="marker-pin" style="background:#16a34a"><span>❀</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3566px, 1253px, 0px); z-index: 1253;"><div class="marker-pin" style="background:#16a34a"><span>❀</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3521px, 713px, 0px); z-index: 713;"><div class="marker-pin" style="background:#16a34a"><span>❀</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3362px, 1702px, 0px); z-index: 1702;"><div class="marker-pin" style="background:#16a34a"><span>❀</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3413px, 1230px, 0px); z-index: 1230;"><div class="marker-pin" style="background:#16a34a"><span>❀</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3389px, 1726px, 0px); z-index: 1726;"><div class="marker-pin" style="background:#16a34a"><span>❀</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2483px, -365px, 0px); z-index: -365;"><div class="marker-pin" style="background:#2563eb"><span>⛰</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2520px, -415px, 0px); z-index: -415;"><div class="marker-pin" style="background:#2563eb"><span>⛰</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2816px, -340px, 0px); z-index: -340;"><div class="marker-pin" style="background:#2563eb"><span>⛰</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2486px, -550px, 0px); z-index: -550;"><div class="marker-pin" style="background:#2563eb"><span>⛰</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2355px, -333px, 0px); z-index: -333;"><div class="marker-pin" style="background:#2563eb"><span>⛰</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2259px, -293px, 0px); z-index: -293;"><div class="marker-pin" style="background:#2563eb"><span>⛰</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2658px, 350px, 0px); z-index: 350;"><div class="marker-pin" style="background:#2563eb"><span>⛰</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2865px, -209px, 0px); z-index: -209;"><div class="marker-pin" style="background:#2563eb"><span>⛰</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2329px, -309px, 0px); z-index: -309;"><div class="marker-pin" style="background:#2563eb"><span>⛰</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2323px, -421px, 0px); z-index: -421;"><div class="marker-pin" style="background:#2563eb"><span>⛰</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3291px, 2905px, 0px); z-index: 2905;"><div class="marker-pin" style="background:#ea580c"><span>⌘</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3237px, 2883px, 0px); z-index: 2883;"><div class="marker-pin" style="background:#ea580c"><span>⌘</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3256px, 2886px, 0px); z-index: 2886;"><div class="marker-pin" style="background:#ea580c"><span>⌘</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3139px, 2884px, 0px); z-index: 2884;"><div class="marker-pin" style="background:#ea580c"><span>⌘</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2983px, 3149px, 0px); z-index: 3149;"><div class="marker-pin" style="background:#ea580c"><span>⌘</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3202px, 2996px, 0px); z-index: 2996;"><div class="marker-pin" style="background:#ea580c"><span>⌘</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(3169px, 2621px, 0px); z-index: 2621;"><div class="marker-pin" style="background:#ea580c"><span>⌘</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2388px, 3054px, 0px); z-index: 3054;"><div class="marker-pin" style="background:#ea580c"><span>⌘</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2873px, 2943px, 0px); z-index: 2943;"><div class="marker-pin" style="background:#ea580c"><span>⌘</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2399px, 1829px, 0px); z-index: 1829;"><div class="marker-pin" style="background:#ea580c"><span>⌘</span></div></div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -13px; margin-top: -26px; width: 26px; height: 26px; transform: translate3d(2767px, 2172px, 0px); z-index: 2172;"><div class="marker-pin" style="background:#ea580c"><span>⌘</span></div></div></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"><div class="leaflet-popup  leaflet-zoom-animated" style="opacity: 1; transform: translate3d(3373px, 1045px, 0px); bottom: -7px; left: -156px;"><div class="leaflet-popup-content-wrapper"><div class="leaflet-popup-content" style="width: 281px;">
+    <div class="pop-name">מוזיאון Neka Art</div>
+    <span class="pop-area" style="background:#16a34a">אובוד וסביבתה</span>
+    <div class="pop-desc">מוזיאון אמנות באלינזית ובינלאומית, בתוך גנים שקטים. כולל אוסף יפהפה של פגיוני קריס מסורתיים.</div>
+    <a class="pop-link" href="https://www.google.com/maps/search/?api=1&amp;query=-8.4925407,115.2540154" target="_blank" rel="noopener">פתח במפות גוגל / ניווט ←</a></div></div><div class="leaflet-popup-tip-container"><div class="leaflet-popup-tip"></div></div><a class="leaflet-popup-close-button" role="button" aria-label="Close popup" href="file:///Users/guygelb/Downloads/bali-map.html#close"><span aria-hidden="true">×</span></a></div></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(1.71917e+06px, 1.09821e+06px, 0px) scale(4096);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="file:///Users/guygelb/Downloads/bali-map.html#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="file:///Users/guygelb/Downloads/bali-map.html#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com/" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> © OpenStreetMap, © CARTO</div></div></div></div>
+    <div class="panel" id="legend"><h2>אזורים — לחצו לסינון</h2><label class="filter">
+    <input type="checkbox" checked="" data-cat="hotel">
+    <span class="dot" style="background:#7c3aed"></span>
+    <span class="label">מלונות הטיול</span>
+    <span class="count">3</span></label><label class="filter">
+    <input type="checkbox" checked="" data-cat="ubud">
+    <span class="dot" style="background:#16a34a"></span>
+    <span class="label">אובוד וסביבתה</span>
+    <span class="count">10</span></label><label class="filter">
+    <input type="checkbox" checked="" data-cat="munduk">
+    <span class="dot" style="background:#2563eb"></span>
+    <span class="label">מונדוק / הצפון</span>
+    <span class="count">10</span></label><label class="filter">
+    <input type="checkbox" checked="" data-cat="south">
+    <span class="dot" style="background:#ea580c"></span>
+    <span class="label">נוסה דואה / הדרום</span>
+    <span class="count">11</span></label><div class="tip">סך הכל 34 נקודות. הקובץ עצמאי — אפשר לפתוח בכל דפדפן ולשתף.</div></div>
+  </div>
+</div>
+
+<script src="./מפת המלצות לבאלי — אובוד · מונדוק · נוסה דואה_files/leaflet.min.js"></script>
+<script>
+const CATS = {
+  hotel:  {name:"מלונות הטיול", color:"#7c3aed", icon:"🏨"},
+  ubud:   {name:"אובוד וסביבתה", color:"#16a34a", icon:"❀"},
+  munduk: {name:"מונדוק / הצפון", color:"#2563eb", icon:"⛰"},
+  south:  {name:"נוסה דואה / הדרום", color:"#ea580c", icon:"⌘"}
+};
+
+const PLACES = [
+  // ----- מלונות -----
+  {cat:"hotel", name:"Puri Wulandari — מלון אובוד", lat:-8.4658567, lng:115.2428703, desc:"מלון הלינה באובוד. וילות עם בריכת אינפיניטי פרטית מעל עמק נהר איונג, אווירה שקטה וירוקה."},
+  {cat:"hotel", name:"Elevate Bali — מלון מונדוק", lat:-8.2709908, lng:115.0813675, desc:"מלון הלינה במונדוק. וילות בהרים עם נוף שקיעה ואוויר הררי קריר."},
+  {cat:"hotel", name:"The Apurva Kempinski — מלון נוסה דואה", lat:-8.8287865, lng:115.2156143, desc:"מלון הלינה בנוסה דואה. ריזורט יוקרה על מדרון מול הים, בריכות וחוף פרטי."},
+
+  // ----- אובוד -----
+  {cat:"ubud", name:"Gunung Kawi (גונונג קאווי)", lat:-8.4235384, lng:115.3105687, desc:"עשר מצבות סלע ענקיות חצובות מהמאה ה-11 בעמק נהר ירוק, מוקפות מדרגות אורז. מרשים ושקט יחסית. כ-300 מדרגות בכל כיוון."},
+  {cat:"ubud", name:"מקדש סרסוואטי (Taman Saraswati)", lat:-8.506084, lng:115.2610849, desc:"מקדש מים יפהפה במרכז אובוד עם בריכת לוטוס, מוקדש לאלת החוכמה והאמנות. בערב מתקיים מופע ריקוד מול המקדש."},
+  {cat:"ubud", name:"ארמון אובוד (Puri Saren)", lat:-8.5067194, lng:115.2627222, desc:"ארמון המלוכה של אובוד במרכז העיר. בערבים מופעי ריקוד מסורתי — לגונג, ברונג וקצ'אק. כניסה חינם."},
+  {cat:"ubud", name:"הליכת רכס קמפואן (Campuhan Ridge)", lat:-8.5035806, lng:115.2547579, desc:"טיול בוקר קל ופתוח על רכס ירוק בין שני נהרות. כ-2 ק\"מ לכל כיוון, חינמי, נהדר לפני החום."},
+  {cat:"ubud", name:"מוזיאון Neka Art", lat:-8.4925407, lng:115.2540154, desc:"מוזיאון אמנות באלינזית ובינלאומית, בתוך גנים שקטים. כולל אוסף יפהפה של פגיוני קריס מסורתיים."},
+  {cat:"ubud", name:"מערת הפיל (Goa Gajah)", lat:-8.5234378, lng:115.2871568, desc:"מקדש-מערה מהמאה ה-11 שפתחו חצוב בדמות שד, עם בריכות רחצה קדושות ועצי ענק. עתיק ואטמוספרי."},
+  {cat:"ubud", name:"מדרגות האורז Tegalalang", lat:-8.4317112, lng:115.279303, desc:"מדרגות אורז איקוניות וירוקות, עם נדנדות ('Bali Swing'), נקודות צילום ובתי קפה עם נוף."},
+  {cat:"ubud", name:"Bali Bird Park (גן ציפורים)", lat:-8.5996431, lng:115.2520569, desc:"גן ציפורים מצוין למשפחה — מגוון עצום, מופעים והאכלת ציפורים. בדרך בין שדה התעופה לאובוד."},
+  {cat:"ubud", name:"יער הקופים הקדוש (Monkey Forest)", lat:-8.5194862, lng:115.2608132, desc:"יער גשם בלב אובוד עם מאות קופים ומקדשים עתיקים אפופי טחב. שמרו על משקפיים ותכשיטים."},
+  {cat:"ubud", name:"כפר הכסף צ'לוק — סדנת צורפות", lat:-8.6037243, lng:115.256684, desc:"כפר הצורפים המסורתי. סדנה שבה כל אחד מכין תכשיט כסף משלו בהדרכה — חוויה משפחתית ומזכרת אישית."},
+
+  // ----- מונדוק -----
+  {cat:"munduk", name:"מקדש אגם טמבלינגן (Ulun Danu Tamblingan)", lat:-8.2486905, lng:115.1011174, desc:"מקדש שקט ואותנטי על שפת אגם טמבלינגן הערפילי. טרק קצר ביער ושייט בסירת עץ מסורתית — חוויה רוחנית קסומה."},
+  {cat:"munduk", name:"תצפית Wanagiri Hidden Hills", lat:-8.2402563, lng:115.1075021, desc:"תצפית על האגמים התאומים בויאן וטמבלינגן, עם נקודות צילום ונדנדות מעל הנוף. כניסה בתשלום."},
+  {cat:"munduk", name:"שער הנדרה (Handara Gate)", lat:-8.2529949, lng:115.1582757, desc:"שער באלינזי איקוני על רקע ההרים — אחד מאתרי הצילום המפורסמים באי. כדאי להגיע מוקדם."},
+  {cat:"munduk", name:"מפל Banyumala התאום", lat:-8.2171873, lng:115.1016811, desc:"מפל תאום יפהפה עם בריכה טבעית לרחצה. ירידה קצרה יחסית (5-10 דק') ופחות קהל ממפלים אחרים."},
+  {cat:"munduk", name:"מפל מונדוק (Red Coral)", lat:-8.2541032, lng:115.0791492, desc:"מפל יפה וקריר בלב אזור מונדוק, ירידה במדרגות. חלק מטרק המפלים הקלאסי של האזור."},
+  {cat:"munduk", name:"מפל מלאנטינג (Melanting)", lat:-8.2608842, lng:115.0627329, desc:"מפל גבוה ומרשים ביער. ירידה של מאות מדרגות — מתאים למי שכשירים פיזית."},
+  {cat:"munduk", name:"מדרגות האורז ג'אטילואיה (Jatiluwih)", lat:-8.3700942, lng:115.1312269, desc:"מדרגות אורז עצומות, אתר מורשת עולמית של אונסקו. מהמרשימות באי ופחות עמוסות מאלה של אובוד. בדרך."},
+  {cat:"munduk", name:"מקדש המים Ulun Danu Beratan", lat:-8.2751807, lng:115.1668234, desc:"מקדש המים ה'צף' האיקוני על אגם ברטן, על שטר ה-50,000 רופיה. כבר בתוכנית — אחד היפים בבאלי."},
+  {cat:"munduk", name:"מסעדת שקיעה Ngiring Ngewedang", lat:-8.2582742, lng:115.0747141, desc:"מסעדת פסגה עם נוף, קפה מקומי טרי ושלווה. 'גן עדן של מונדוק', עם אפשרויות צמחוניות וטבעוניות."},
+  {cat:"munduk", name:"אחוזת הקפה Munduk Moding", lat:-8.2391504, lng:115.0736870, desc:"אחוזת קפה אורגנית עם סיור מטע וטעימות, סדנאות תרבות ובריכת אינפיניטי מפורסמת מעל היער."},
+
+  // ----- נוסה דואה / הדרום -----
+  {cat:"south", name:"Water Blow (התזת הגלים)", lat:-8.8038567, lng:115.2398639, desc:"גלי האוקיינוס ההודי מתנפצים על צוקי גיר ויוצרים מזרקות מים אדירות. מרחק הליכה מאזור המלונות, חינמי."},
+  {cat:"south", name:"מוזיאון פסיפיקה (Museum Pasifika)", lat:-8.8000858, lng:115.2307029, desc:"אוסף ענק של אמנות אסיה-פסיפיק — 600+ יצירות מ-25 מדינות. ממש באזור המלונות, מומלץ לחובבי תרבות."},
+  {cat:"south", name:"מופע Devdan", lat:-8.800629, lng:115.2338681, desc:"מופע ראווה מרהיב דרך איי אינדונזיה — ריקוד, אקרובטיקה, אור וצליל. מצוין לערב משפחתי. סגור בימי ראשון."},
+  {cat:"south", name:"פוג'ה מנדלה (Puja Mandala)", lat:-8.8002968, lng:115.2138353, desc:"חמישה בתי תפילה זה לצד זה — מקדש הינדי ובודהיסטי, כנסייה קתולית ופרוטסטנטית ומסגד. סמל לדו-קיום. כניסה חינם."},
+  {cat:"south", name:"חוף פנדאווה (Pandawa Beach)", lat:-8.8452802, lng:115.1870679, desc:"חוף חול זהוב נסתר מתחת לצוקי גיר אדירים שנחצבו לגישה. מצנחי רחיפה חגים מעל אחר הצהריים."},
+  {cat:"south", name:"מקדש Pura Geger", lat:-8.8193074, lng:115.2246248, desc:"מקדש לבן על צוק מעל חוף Geger, עם נוף פנורמי למפרץ. הקפידו על סארונג. שקט ויפה."},
+  {cat:"south", name:"טנג'ונג בנואה — ספורט ימי", lat:-8.7556739, lng:115.2189936, desc:"מרכז ספורט המים: ג'ט סקי, מצנחי רחיפה, בננה בוט, שנורקלינג וביקור באי הצבים. אקשן למשפחה."},
+  {cat:"south", name:"מקדש אולואטו (Uluwatu) + קצ'אק", lat:-8.8291432, lng:115.0849069, desc:"מקדש על צוק דרמטי מעל הים, עם מופע ריקוד קצ'אק בשקיעה — מהחוויות הבלתי נשכחות. כ-45 דק' נסיעה."},
+  {cat:"south", name:"פארק התרבות GWK", lat:-8.8101936, lng:115.1680614, desc:"פארק תרבות עם פסל ענק של האל וישנו רוכב על הגארודה (מהגבוהים בדרום-מזרח אסיה) ומופעי תרבות."},
+  {cat:"south", name:"מקדש הים Tanah Lot", lat:-8.621213, lng:115.086807, desc:"מקדש ים איקוני על סלע מול האוקיינוס, שקיעה מרהיבה. בדרך מהצפון לדרום — כבר בתוכנית."},
+  {cat:"south", name:"Potato Head Beach Club", lat:-8.6794353, lng:115.1499342, desc:"מועדון וחוף מעוצב שנבנה מחומרים ממוחזרים בלבד, בסמיניאק. עצירה בתוכנית בדרך דרומה."}
+];
+
+// --- map ---
+const map = L.map('map', {zoomControl:true}).setView([-8.55,115.18], 10);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
+  attribution:'&copy; OpenStreetMap, &copy; CARTO', maxZoom:19, subdomains:'abcd'
+}).addTo(map);
+
+function pinIcon(color, glyph){
+  return L.divIcon({
+    className:'',
+    html:`<div class="marker-pin" style="background:${color}"><span>${glyph}</span></div>`,
+    iconSize:[26,26], iconAnchor:[13,26], popupAnchor:[0,-26]
+  });
+}
+
+const layers = {};
+const counts = {};
+Object.keys(CATS).forEach(c=>{ layers[c]=L.layerGroup().addTo(map); counts[c]=0; });
+
+const bounds = [];
+PLACES.forEach(p=>{
+  const c = CATS[p.cat];
+  const gmaps = `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`;
+  const popup = `
+    <div class="pop-name">${p.name}</div>
+    <span class="pop-area" style="background:${c.color}">${c.name}</span>
+    <div class="pop-desc">${p.desc}</div>
+    <a class="pop-link" href="${gmaps}" target="_blank" rel="noopener">פתח במפות גוגל / ניווט ←</a>`;
+  L.marker([p.lat,p.lng], {icon:pinIcon(c.color, c.icon)})
+    .bindPopup(popup, {maxWidth:280})
+    .addTo(layers[p.cat]);
+  counts[p.cat]++;
+  bounds.push([p.lat,p.lng]);
+});
+map.fitBounds(bounds, {padding:[50,50]});
+
+// --- legend / filters ---
+const legend = document.getElementById('legend');
+legend.innerHTML = '<h2>אזורים — לחצו לסינון</h2>';
+Object.keys(CATS).forEach(c=>{
+  const cat = CATS[c];
+  const row = document.createElement('label');
+  row.className = 'filter';
+  row.innerHTML = `
+    <input type="checkbox" checked data-cat="${c}">
+    <span class="dot" style="background:${cat.color}"></span>
+    <span class="label">${cat.name}</span>
+    <span class="count">${counts[c]}</span>`;
+  row.querySelector('input').addEventListener('change', e=>{
+    if(e.target.checked){ map.addLayer(layers[c]); row.classList.remove('off'); }
+    else { map.removeLayer(layers[c]); row.classList.add('off'); }
+  });
+  legend.appendChild(row);
+});
+const tip = document.createElement('div');
+tip.className = 'tip';
+tip.innerHTML = 'סך הכל ' + PLACES.length + ' נקודות. הקובץ עצמאי — אפשר לפתוח בכל דפדפן ולשתף.';
+legend.appendChild(tip);
+</script>
+
+
+</body></html>
